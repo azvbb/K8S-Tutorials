@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: writer-pod-2
+spec:
+  containers:
+  - name: writer
+    image: busybox
+    command: ["/bin/sh", "-c"]
+    args:
+      - echo $(hostname) > /data/hostname2.txt;
+    volumeMounts:
+    - mountPath: /data
+      name: shared-storage
+  volumes:
+  - name: shared-storage
+    persistentVolumeClaim:
+      claimName: shared-pvc
