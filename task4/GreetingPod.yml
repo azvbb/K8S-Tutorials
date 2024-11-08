@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: print-env-greeting
+spec:
+  containers:
+  - name: bash-greeting
+    image: bash
+    command: ["bash", "-c", 'echo "$GREETING $COMPANY $GROUP"']
+    env:
+    - name: GREETING
+      value: "Welcome"
+    - name: COMPANY
+      value: "Eng."
+    - name: GROUP
+      value: "Mostafa"
